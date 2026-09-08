@@ -1,12 +1,12 @@
 # PMO-Automation
 
-Public overview of **PMO Automation** — a project management office web app that connects to Azure DevOps Boards.
+Public overview of **PMO Automation** — an **AI project** and a **wrapper on Azure DevOps** to automate project management for **Agile Scrum**.
+
+This repository is **still in progress**. It exists **purely to demonstrate PM automation using AI**.
 
 This public repository holds the product README and screenshots. Application source is private: [Kishoreinline/PMO-Automation](https://github.com/Kishoreinline/PMO-Automation).
 
-It is **not** an algo-trading engine. Product managers connect their Azure DevOps organization through the UI so dashboards can read and write Boards data: stories, points, sprints, team capacity, and a simple cost forecast.
-
-Azure DevOps is the live board, not a git remote for this product.
+Connect an Azure DevOps organization through the UI. The app uses AI to estimate story points, order work, pack sprints within team capacity, and realign the plan when the backlog changes. Azure DevOps is the live board; this repo is documentation only.
 
 ## Screenshots
 
