@@ -4,9 +4,7 @@ Public overview of **PMO Automation** — an **AI project** and a **wrapper on A
 
 This repository is **still in progress**. It exists **purely to demonstrate PM automation using AI**.
 
-This public repository holds the product README and screenshots. Application source is private: [Kishoreinline/PMO-Automation](https://github.com/Kishoreinline/PMO-Automation).
-
-Connect an Azure DevOps organization through the UI. The app uses AI to estimate story points, order work, pack sprints within team capacity, and realign the plan when the backlog changes. Azure DevOps is the live board; this repo is documentation only.
+Connect an Azure DevOps organization through the UI. The app uses AI to estimate story points, order work, pack sprints within team capacity, and realign the plan when the backlog changes. Azure DevOps is the live board.
 
 ## Screenshots
 
@@ -71,7 +69,7 @@ Stories with **no points** leave the sprint plan (backlog, unassigned). Remainin
 
 Personal Microsoft accounts cannot use work/school Entra sign-in. **PAT-based Connect is the supported path.**
 
-## Run (from the private source repo)
+## Run
 
 ```bash
 dotnet run --project src/RetailAlgoTrading.Pmo --launch-profile http
@@ -94,7 +92,7 @@ Suggested PAT scopes: Work Items (read & write), Project and team (read), and en
 
 ## CSV format
 
-Sample file in the source repo: `src/RetailAlgoTrading.Pmo/wwwroot/samples/user-stories.sample.csv`
+Sample file: `src/RetailAlgoTrading.Pmo/wwwroot/samples/user-stories.sample.csv`
 
 Columns (case-insensitive):
 
@@ -111,7 +109,7 @@ Stories are previewed first. Titles that already exist in the project are reject
 
 ## AI configuration (optional)
 
-In the source repo, `src/RetailAlgoTrading.Pmo/appsettings.json`:
+`src/RetailAlgoTrading.Pmo/appsettings.json`:
 
 ```json
 "StoryPointAi": {
@@ -132,6 +130,5 @@ Set `StoryPointAi:ApiKey` (user secrets or environment is better than committing
 
 ## Source of truth
 
-- Private GitHub [Kishoreinline/PMO-Automation](https://github.com/Kishoreinline/PMO-Automation): PMO application code.
-- This public repo: product README and screenshots.
+- This GitHub repository: application overview and screenshots.
 - Azure DevOps: live work items, sprints, and team membership. Users connect their org through the app UI.
