@@ -2,7 +2,7 @@
 
 **This repository is still in progress. It exists purely to demonstrate PM automation using AI.**
 
-Public showcase for **PMO Automation** — an AI-assisted wrapper on **Azure DevOps** that helps run Agile / Scrum (and related board) project management. This repo holds **overview material and screenshots only**. Application source code is **not** published here.
+Public showcase for **PMO Automation** — an AI-assisted wrapper on **Azure DevOps** that helps run Agile / Scrum (and Kanban / Spiral board modes). This repo holds **overview material and screenshots only**. Application source code is **not** published here.
 
 Connect an Azure DevOps organization through the product UI. AI can recommend story points, order work, pack sprints within team capacity, realign plans when the backlog changes, surface reports, and propose bounded agent guidance. **Azure DevOps remains the live board.** Humans confirm before writes.
 
@@ -16,73 +16,120 @@ Connect an Azure DevOps organization through the product UI. AI can recommend st
 
 ## Screenshots
 
+Each numbered workspace tab uses a distinct color in the nav (icons + left panel accent).
+
 ### Connect
 
-PAT-based connect. The token stays in the browser session only.
+PAT-based connect. Organization URL and token stay in the browser session only (never written to disk).
 
 ![Connect to Azure DevOps](docs/screenshots/01-connect.png)
 
 ### Projects
 
-Pick an Azure DevOps project to open the PMO tabs.
+After connect, pick an Azure DevOps project to open the twelve-tab PMO workspace.
 
 ![Projects](docs/screenshots/02-projects.png)
 
-### Story points
+### 1 — Upload
 
-Fibonacci or T-shirt scale (**1 point = 1 day**). AI can suggest points and execution order. Plan changes are reviewed before anything is written to Azure DevOps.
+CSV or Excel (`.xlsx`) preview. Duplicate titles are skipped. Nothing is created in Azure DevOps until you confirm.
 
-![Story points and confirm plan](docs/screenshots/03-story-points.png)
+![Upload](docs/screenshots/03-upload.png)
 
-### Sprints
+### 2 — Story points / grooming
 
-Set duration and start dates, then pack whole stories into dated sprints without exceeding team capacity.
+Fibonacci or T-shirt (**1 point = 1 day**). AI can suggest points and order. Manual changes trigger plan realignment — confirm before Azure DevOps writes.
 
-![Sprints](docs/screenshots/04-sprints.png)
+![Story points](docs/screenshots/04-story-points.png)
 
-### Team resources
+### 3 — Sub-tasks
 
-ADO members, start dates, story burn per sprint, and assigned load after the latest plan.
+Only pointed stories are eligible. Pick a story type template and create matching child tasks.
 
-![Team resources](docs/screenshots/05-resources.png)
+![Sub-tasks](docs/screenshots/05-subtasks.png)
 
-### Financials
+### 4 — Sprints
 
-Fixed or T&M style tracking — people, work, and money, with capacity-aware sprint billing.
+Set duration and start dates, create or delete sprints/cycles, then pack whole stories under a hard capacity cap (overflow spills to the next sprint).
 
-![Financials](docs/screenshots/06-financials.png)
+![Sprints](docs/screenshots/06-sprints.png)
 
-## What the product demonstrates
+### 5 — Team resources
 
-After connect (personal access token) and project pick, the PMO workspace guides delivery work across tabs, including:
+ADO members, start dates, story burn per sprint, and assigned load. Changing burn rates re-fits capacity across Tabs 4–6.
 
-| Area | What you see |
+![Team resources](docs/screenshots/07-resources.png)
+
+### 6 — Financials
+
+**Fixed** or **T&M** billing mode. People, work, and money boxes with a capacity-aware sprint-by-sprint bill.
+
+![Financials](docs/screenshots/08-financials.png)
+
+### 7 — Kanban / Spiral
+
+Delivery-mode radios; sprint- or cycle-wise boards (ADO states), blockers, aging; AI re-fit with confirm before write.
+
+![Kanban / Spiral](docs/screenshots/09-kanban.png)
+
+### 8 — Reports
+
+Report-type dropdown + charts. Default: **current sprint burndown**. Also velocity, capacity / planned / delivered, and more.
+
+![Reports](docs/screenshots/10-reports.png)
+
+### 9 — AI Agents
+
+Starter prompts + free-text Ask. Review → Approve / Reject. Approved answers stay pinned with a suggested next tab.
+
+![AI Agents](docs/screenshots/11-agents.png)
+
+### 10 — Learning
+
+Estimation accuracy, planning variance, grooming gaps, prompt hashes.
+
+![Learning](docs/screenshots/12-learning.png)
+
+### 11 — Audit
+
+Searchable session audit trail of connects, estimates, confirms, and other actions.
+
+![Audit](docs/screenshots/13-audit.png)
+
+### 12 — Settings
+
+AI endpoint / model / key (OpenAI-compatible or local Ollama), notifications, prompt defaults.
+
+![Settings](docs/screenshots/14-settings.png)
+
+## Twelve-tab workspace
+
+| Tab | Purpose |
 | --- | --- |
-| Backlog upload | CSV / Excel style story intake into Azure DevOps |
-| Story points & grooming | Estimates, order, acceptance readiness |
-| Sub-tasks | Child tasks under pointed stories |
-| Sprint / cycle planning | Capacity-capped packing; confirm before ADO write |
-| Team resources | Burn rates and load |
-| Finance | Fixed vs T&M style forecast views |
-| Boards | Kanban / Spiral oriented board views |
-| Reports | Burndown, capacity vs planned vs delivered, and related charts |
-| AI Agents | Ask / starter prompts; recommendations stay advisory until humans act |
-
-Any material plan change is meant to show as a **recommendation**, then a **confirm** step. Discard leaves Azure DevOps unchanged.
+| 1 — Upload | Preview CSV/Excel stories, skip duplicates by title, then create work items in Azure DevOps after confirm. |
+| 2 — Story points / grooming | Fibonacci or T-shirt (**1 point = 1 day**). AI pointing & order; grooming for AC / deps / risks. |
+| 3 — Sub-tasks | Only pointed stories. Story-type templates → child tasks. |
+| 4 — Sprints | Duration, dates, pack under hard capacity; overflow to next sprint. |
+| 5 — Team resources | ADO members, burn rates, assigned load; burn changes re-fit capacity. |
+| 6 — Financials | Fixed or T&M; people / work / money; capacity-capped sprint bill. |
+| 7 — Kanban / Spiral | Mode radios; sprint- or cycle-wise boards; confirm before ADO write. |
+| 8 — Reports | Burndown (default), velocity, capacity / planned / delivered, and more. |
+| 9 — AI Agents | Starter prompts + Ask; Approve / Reject; next-tab tips. Never writes ADO directly. |
+| 10 — Learning | Estimation accuracy, planning variance, grooming gaps. |
+| 11 — Audit | Searchable session audit trail. |
+| 12 — Settings | AI endpoint/model/key, notifications, prompt defaults. |
 
 ## Principles
 
-- Azure DevOps is the source of truth for work-item state.
-- AI recommendations are distinguishable from authoritative board data.
-- External writes are validated and auditable (confirm before write).
-- Personal Microsoft accounts: **PAT-based Connect** is the supported path (not work/school Entra for that scenario).
+- Scrum by default; Kanban and Spiral modes are also supported.
+- Typical sprint length is 2 weeks (configurable).
+- **1 story point = 1 day** (initial assumption).
+- **Azure DevOps** is the source of truth for work-item state.
+- AI recommendations require **human confirmation** before Azure DevOps writes.
+- Hard capacity: overload spills to the next sprint.
+- Personal Microsoft accounts use **PAT-based Connect** (not work/school Entra).
 
 ## Source of truth
 
-- **This GitHub repository:** public overview and screenshots only.
-- **Private development:** application code is developed separately and is not mirrored here.
-- **Azure DevOps:** live work items, sprints, and team membership — users connect their org through the app UI.
-
----
-
-*Work in progress — demonstration of PM automation using AI.*
+- **This GitHub repository:** screenshots and product overview only (no app source).
+- **Azure DevOps:** live work items, sprints, and team membership — users connect their org through the product UI.
