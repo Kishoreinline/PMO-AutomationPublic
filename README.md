@@ -1,18 +1,40 @@
 # PMO Automation (public overview)
 
-**This repository is still in progress. It exists purely to demonstrate PM automation using AI.**
+**Purpose: automate the PMO and Agile process.**
 
-Public showcase for **PMO Automation** — an AI-assisted wrapper on **Azure DevOps** that helps run Agile / Scrum (and Kanban / Spiral board modes). This repo holds **overview material and screenshots only**. Application source code is **not** published here.
+This is an AI-assisted **project management office (PMO)** product — a wrapper on **Azure DevOps** for **Agile / Scrum** (and Kanban / Spiral). It is not an algo-trading engine. The goal is to automate pointing, sprint packing, boards, standups, retrospectives, reports, and invoices so delivery leads spend less time on ceremony admin.
 
-Connect an Azure DevOps organization through the product UI. AI can recommend story points, order work, pack sprints within team capacity, realign plans when the backlog changes, surface reports, and propose bounded agent guidance. **Azure DevOps remains the live board.** Humans confirm before writes.
+**This repository is still in progress. It exists to demonstrate PMO and Agile automation using AI.**
+
+This public repo holds **overview material and screenshots only**. Application source code is **not** published here.
+
+Connect an Azure DevOps organization through the product UI. Azure DevOps remains the live board. Humans **confirm** before writes.
 
 ## Status
 
 | | |
 | --- | --- |
-| Purpose | Demonstrate PM automation with AI on Azure DevOps |
+| Purpose | Automate PMO and Agile process with AI on Azure DevOps |
 | This repo | Screenshots + product narrative (no app source) |
 | Maturity | Work in progress |
+
+## What it automates
+
+| PMO / Agile step | What the product does |
+| --- | --- |
+| Backlog intake | Preview CSV/Excel stories, skip duplicates, create work items after confirm. |
+| Grooming & estimation | Fibonacci or T-shirt (**1 point = 1 day**), AI order, AC / deps / risks. |
+| Sprint planning | Pack whole stories under a hard team-capacity cap. |
+| Team & money | T&M or Fixed billing, sprint bill, **PDF invoice** for a completed sprint. |
+| Execution board | Scrum / Kanban / Spiral; sprint-wise columns; confirm before ADO writes. |
+| Ceremonies | Daily standup listen/paste + manual impediments; AI prioritize at call end. Sprint retro issues emailed to the team. |
+| Governance | Delivery reports, bounded AI agents, learning metrics, audit trail. |
+
+## Latest
+
+- **13 workspace tabs** (Standup / Retro sits between Kanban and Reports).
+- **Financials:** PDF invoice for a completed sprint (download; email if SMTP is configured).
+- **Standup / Retro:** capture conversation, add impediments, AI-prioritize at standup end, send retro issues to the team.
 
 ## Screenshots
 
@@ -26,7 +48,7 @@ PAT-based connect. Organization URL and token stay in the browser session only (
 
 ### Projects
 
-After connect, pick an Azure DevOps project to open the twelve-tab PMO workspace.
+After connect, pick an Azure DevOps project to open the thirteen-tab PMO workspace.
 
 ![Projects](docs/screenshots/02-projects.png)
 
@@ -62,7 +84,7 @@ ADO members, start dates, story burn per sprint, and assigned load. Changing bur
 
 ### 6 — Financials
 
-**Fixed** or **T&M** billing mode. People, work, and money boxes with a capacity-aware sprint-by-sprint bill.
+**Fixed** or **T&M** billing. Sprint-by-sprint bill under capacity. After a sprint finishes, generate a **PDF invoice**.
 
 ![Financials](docs/screenshots/08-financials.png)
 
@@ -72,37 +94,43 @@ Delivery-mode radios; sprint- or cycle-wise boards (ADO states), blockers, aging
 
 ![Kanban / Spiral](docs/screenshots/09-kanban.png)
 
-### 8 — Reports
+### 8 — Standup / Retro
+
+Listen or paste daily standup / sprint retrospective. Add impediments manually. AI prioritizes at standup end. After a retro, send the issues list to the team.
+
+![Standup / Retro](docs/screenshots/10-standup.png)
+
+### 9 — Reports
 
 Report-type dropdown + charts. Default: **current sprint burndown**. Also velocity, capacity / planned / delivered, and more.
 
-![Reports](docs/screenshots/10-reports.png)
+![Reports](docs/screenshots/11-reports.png)
 
-### 9 — AI Agents
+### 10 — AI Agents
 
 Starter prompts + free-text Ask. Review → Approve / Reject. Approved answers stay pinned with a suggested next tab.
 
-![AI Agents](docs/screenshots/11-agents.png)
+![AI Agents](docs/screenshots/12-agents.png)
 
-### 10 — Learning
+### 11 — Learning
 
 Estimation accuracy, planning variance, grooming gaps, prompt hashes.
 
-![Learning](docs/screenshots/12-learning.png)
+![Learning](docs/screenshots/13-learning.png)
 
-### 11 — Audit
+### 12 — Audit
 
 Searchable session audit trail of connects, estimates, confirms, and other actions.
 
-![Audit](docs/screenshots/13-audit.png)
+![Audit](docs/screenshots/14-audit.png)
 
-### 12 — Settings
+### 13 — Settings
 
 AI endpoint / model / key (OpenAI-compatible or local Ollama), notifications, prompt defaults.
 
-![Settings](docs/screenshots/14-settings.png)
+![Settings](docs/screenshots/15-settings.png)
 
-## Twelve-tab workspace
+## Thirteen-tab workspace
 
 | Tab | Purpose |
 | --- | --- |
@@ -111,13 +139,14 @@ AI endpoint / model / key (OpenAI-compatible or local Ollama), notifications, pr
 | 3 — Sub-tasks | Only pointed stories. Story-type templates → child tasks. |
 | 4 — Sprints | Duration, dates, pack under hard capacity; overflow to next sprint. |
 | 5 — Team resources | ADO members, burn rates, assigned load; burn changes re-fit capacity. |
-| 6 — Financials | Fixed or T&M; people / work / money; capacity-capped sprint bill. |
+| 6 — Financials | Fixed or T&M; people / work / money; capacity-capped sprint bill; PDF invoice. |
 | 7 — Kanban / Spiral | Mode radios; sprint- or cycle-wise boards; confirm before ADO write. |
-| 8 — Reports | Burndown (default), velocity, capacity / planned / delivered, and more. |
-| 9 — AI Agents | Starter prompts + Ask; Approve / Reject; next-tab tips. Never writes ADO directly. |
-| 10 — Learning | Estimation accuracy, planning variance, grooming gaps. |
-| 11 — Audit | Searchable session audit trail. |
-| 12 — Settings | AI endpoint/model/key, notifications, prompt defaults. |
+| 8 — Standup / Retro | Listen/paste standup and retro; manual impediments; AI prioritize; email retro issues. |
+| 9 — Reports | Burndown (default), velocity, capacity / planned / delivered, and more. |
+| 10 — AI Agents | Starter prompts + Ask; Approve / Reject; next-tab tips. Never writes ADO directly. |
+| 11 — Learning | Estimation accuracy, planning variance, grooming gaps. |
+| 12 — Audit | Searchable session audit trail. |
+| 13 — Settings | AI endpoint/model/key, notifications, prompt defaults. |
 
 ## Principles
 
